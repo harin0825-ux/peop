@@ -262,10 +262,11 @@ body[data-posture="PERFORMANCE"] #sectionnav .tab.t-performance{background:var(-
   #stage{position:static !important; width:auto !important; height:auto !important; overflow:visible !important; padding:0 !important;}
   body.print-all .slide{
     display:block !important; position:static !important; transform:none !important;
-    width:277mm !important; height:190mm !important; max-width:none !important; min-height:0 !important;
+    width:277mm !important; max-width:none !important;
+    height:auto !important; min-height:190mm !important;
     margin:0 auto !important; box-shadow:none !important; border-radius:0 !important;
     padding:34px 54px 40px 130px !important;
-    overflow:hidden !important;
+    overflow:visible !important;
     /* legacy + modern fragmentation properties, both needed across print/PDF engines */
     page-break-after:always; break-after:page;
     page-break-inside:avoid; break-inside:avoid;
@@ -273,6 +274,11 @@ body[data-posture="PERFORMANCE"] #sectionnav .tab.t-performance{background:var(-
   }
   body.print-all .slide.title-slide{display:block !important;}
   body.print-all .slide:last-child{page-break-after:auto !important; break-after:auto !important;}
+  /* the on-screen canvas clips/scrolls overflow to fit 800px — printing must show it all instead */
+  body.print-all .plain{max-height:none !important; overflow:visible !important;}
+  body.print-all .rail{position:absolute !important;}
+  body.print-all .doc-preview, body.print-all .pex-wrap, body.print-all .pex-overview,
+  body.print-all .toc-list, body.print-all .theme-alone{height:auto !important;}
   @page{ size: landscape; margin:6mm; }
 }
 
